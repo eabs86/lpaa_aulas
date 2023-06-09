@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Aula 1 de LPAA - Linguagem de Programação Aplicada a Automação - 2020.1
+Aula 1 de LPAA - Linguagem de Programação Aplicada a Automação - 2023.1
 
 - Generalidades da Linguagem Python
 - Comandos Básicos
