@@ -150,7 +150,7 @@ DataFrame.
 
 """
 
-obj = pd.Series([4.5,7.2,-5.3,3.6],index = ['d','b','a','c'])
+obj = pd.Series([4.5,7.2,-5.3,3.6],index = ['d','b','a','c']) 
 
 obj
 
