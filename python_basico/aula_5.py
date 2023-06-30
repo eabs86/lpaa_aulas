@@ -80,7 +80,7 @@ df
 
 df.dropna()
 
-df.dropna(thresh=3) #exclui  1 determinado numero de observações
+df.dropna(thresh=4) #exclui  1 determinado numero de observações
 
 #preenchendo dados ausentes
 
