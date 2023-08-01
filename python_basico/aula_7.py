@@ -31,7 +31,7 @@ def exibir_mensagem_3(nome="Anônimo"):
 
 
 exibir_mensagem()
-exibir_mensagem_2(nome="Fulano")
+exibir_mensagem_2("Fulano")
 exibir_mensagem_3()
 exibir_mensagem_3(nome="Ciclano")
 
@@ -73,6 +73,7 @@ def criar_carro_po(modelo, ano, placa, /, marca, motor, combustivel):
 
 criar_carro_po("Palio", 1999, "ABC-1234", marca="Fiat",
             motor="1.0", combustivel="Gasolina")  # válido
+
 criar_carro_po(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat",
             motor="1.0", combustivel="Gasolina")  # inválido
 
@@ -148,6 +149,10 @@ class Bicicleta:
 
     def __str__(self):
         return f"{self.__class__.__name__}: {', '.join([f'{chave}={valor}' for chave,valor in self.__dict__.items()])}"
+
+# from bicicleta_pkg import Bicicleta
+
+from bicicleta_pkg import *
 
 
 b1 = Bicicleta("vermelha", "caloi", 2022, 600)
