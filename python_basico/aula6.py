@@ -41,9 +41,10 @@ ax2 = fig.add_subplot(2,2,2)
 ax3 = fig.add_subplot(2,2,3)
 ax4 = fig.add_subplot(2,2,4)
 
-plt.plot(np.random.randn(50).cumsum(),'b--s')
+# plt.plot(np.random.randn(50).cumsum(),'b--s')
+# plt.plot(np.random.randn(30).cumsum(),color="red", linestyle="-.",marker="o")
 
-_=ax4.hist(np.random.rand(100),bins=50,color='r',alpha=0.5)
+_=ax4.hist(np.random.rand(100),bins=50,color='r',alpha=1.0)
 ax2.scatter(np.arange(30),np.arange(30)+3*np.random.randn(30),color='cyan', alpha=0.8)
 
 #criação de figura com grade de subplotagens
@@ -58,7 +59,8 @@ plt.subplots_adjust(left =None, bottom = None, right = None, top = None,
                 wspace = None, hspace = None)
 
 
-fig,axes = plt.subplots(2,2, sharex= True, sharey=True)
+fig,axes = plt.subplots(2,2, sharex= False, sharey=True)
+
 for i in range(2):
     for j in range(2):
         axes[i,j].hist(np.random.randn(500),bins=50,color='k',alpha=0.5)
@@ -77,7 +79,7 @@ ax.plot(x,y,linestyle = '--', color= 'g')
 
 plt.plot(np.random.randn(30).cumsum(),'r*--')
 
-plt.plot(np.random.randn(30).cumsum(),color = 'gray',
+plt.plot(np.random.randn(30).cumsum(),color = 'orange',
          linestyle='dotted',marker='o')
 
 data = np.random.randn(30).cumsum()
@@ -163,6 +165,8 @@ df = pd.DataFrame(np.random.randn(10,4).cumsum(0),
                   columns=['A','B','C','D'],
                   index = np.arange(0,100,10))
 df.plot()
+
+plt.plot(df)
 
 #plotagem de barras
 
