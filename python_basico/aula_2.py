@@ -89,6 +89,17 @@ arr_slice_copy[1]=12345
 
 arr2d = np.array([[1,2,3],[4,5,6],[7,8,9]])
 
+# Indexação e fatiamento de arrays
+arr3 = np.array([11, 12, 13, 14, 15])
+print("Terceiro elemento de arr3:", arr3[2])
+print("Fatiamento de arr3:", arr3[1:4])  # Elementos do índice 1 ao 3 (exclusivo)
+
+# Reshape de arrays
+arr4 = np.arange(12).reshape(3, 4)  # Reshape para uma matriz 3x4
+print("Arr4:")
+print(arr4)
+
+
 
 arr2d[2]
 
