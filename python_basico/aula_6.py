@@ -44,7 +44,7 @@ ax4 = fig.add_subplot(2,2,4)
 # plt.plot(np.random.randn(50).cumsum(),'b--s')
 # plt.plot(np.random.randn(30).cumsum(),color="red", linestyle="-.",marker="o")
 
-_=ax4.hist(np.random.rand(100),bins=50,color='r',alpha=1.0)
+_=ax1.hist(np.random.rand(100),bins=50,color='r',alpha=1.0)
 ax2.scatter(np.arange(30),np.arange(30)+3*np.random.randn(30),color='cyan', alpha=0.8)
 
 #criação de figura com grade de subplotagens

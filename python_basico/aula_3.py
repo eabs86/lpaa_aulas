@@ -7,7 +7,7 @@ LPAA - Linguagem de Programação Aplicada a Automação - 2023.1
 
 Professor: Emmanuel Andrade
 
-- Biblioteca projetada para trabalhar com dados tabulares e heterogêneos.
+- Pandas: Biblioteca projetada para trabalhar com dados tabulares e heterogêneos.
 
 - Numpy é bom para trabalhar com dados numéricos homogêneos em arrays
 
