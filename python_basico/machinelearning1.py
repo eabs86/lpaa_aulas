@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-LPAA - Linguagem de Programação Aplicada a Automação - 2023.1
+LPAA - Linguagem de Programação Aplicada a Automação - 2020.1
 
 - Pandas (Comandos e Generalidades)
 
@@ -33,6 +33,23 @@ housing["ocean_proximity"].value_counts()
 
 housing.describe()
 
+
+#onde salvar as figuras:
+
+
+PROJECT_ROOT_DIR = "."
+CHAPTER_ID = "exemplo_projeto_ml"
+IMAGES_PATH = os.path.join(PROJECT_ROOT_DIR, "images", CHAPTER_ID)
+os.makedirs(IMAGES_PATH, exist_ok=True)
+
+def save_fig(fig_id, tight_layout=True, fig_extension="png", resolution=300):
+    path = os.path.join(IMAGES_PATH, fig_id + "." + fig_extension)
+    print("Salvando figura", fig_id)
+    if tight_layout:
+        plt.tight_layout()
+    plt.savefig(path, format=fig_extension, dpi=resolution)
+    
+    
 #primeiro plot para visualização dos dados
 
 housing.hist(bins=50, figsize=(20,15))
@@ -99,7 +116,19 @@ housing["income_cat"].value_counts() / len(housing)
 
 #comparação
 
-8
+def income_cat_proportions(data):
+    return data["income_cat"].value_counts() / len(data)
+
+train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
+
+compare_props = pd.DataFrame({
+    "Overall": income_cat_proportions(housing),
+    "Stratified": income_cat_proportions(strat_test_set),
+    "Random": income_cat_proportions(test_set),
+}).sort_index()
+compare_props["Rand. %error"] = 100 * compare_props["Random"] / compare_props["Overall"] - 100
+compare_props["Strat. %error"] = 100 * compare_props["Stratified"] / compare_props["Overall"] - 100
+
 #remover a coluna de categoria income_cat
 
 for set_ in (strat_train_set, strat_test_set):
@@ -127,7 +156,7 @@ plt.savefig("housing_prices_scatterplot")
 
 import urllib.request
 # Download the California image
-images_path = os.path.join("images", "end_to_end_project")
+images_path = os.path.join(PROJECT_ROOT_DIR, "images", "exemplo_projeto_ml")
 os.makedirs(images_path, exist_ok=True)
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml2/master/"
 filename = "california.png"
@@ -160,7 +189,7 @@ plt.show()
 
 #correlação entre variáveis
 
-corr_matrix = housing.corr()
+corr_matrix = housing.iloc[:,:-1].corr()
 
 corr_matrix["median_house_value"].sort_values(ascending=False)
 
@@ -241,7 +270,6 @@ housing_tr = pd.DataFrame(X, columns=housing_num.columns,
                           index=housing_num.index)
 
 housing_tr.head()
-
 
 #processando a variável categórica
 
@@ -355,7 +383,6 @@ lin_reg.fit(housing_prepared, housing_labels)
 LinearRegression()
 
 # let's try the full preprocessing pipeline on a few training instances
-
 some_data = housing.iloc[:5]
 some_labels = housing_labels.iloc[:5]
 some_data_prepared = full_pipeline.transform(some_data)
