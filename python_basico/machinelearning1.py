@@ -116,7 +116,19 @@ housing["income_cat"].value_counts() / len(housing)
 
 #comparação
 
-8
+def income_cat_proportions(data):
+    return data["income_cat"].value_counts() / len(data)
+
+train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
+
+compare_props = pd.DataFrame({
+    "Overall": income_cat_proportions(housing),
+    "Stratified": income_cat_proportions(strat_test_set),
+    "Random": income_cat_proportions(test_set),
+}).sort_index()
+compare_props["Rand. %error"] = 100 * compare_props["Random"] / compare_props["Overall"] - 100
+compare_props["Strat. %error"] = 100 * compare_props["Stratified"] / compare_props["Overall"] - 100
+
 #remover a coluna de categoria income_cat
 
 for set_ in (strat_train_set, strat_test_set):
