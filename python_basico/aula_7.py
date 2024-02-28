@@ -22,6 +22,7 @@ def exibir_mensagem():
 # Função que exibe uma mensagem de boas-vindas com um nome específico
 def exibir_mensagem_2(nome):
     print(f"Seja bem vindo {nome}!")
+    return nome
 
 # Função que exibe uma mensagem de boas-vindas com um nome (opcionalmente "Anônimo" se não for fornecido)
 def exibir_mensagem_3(nome="Anônimo"):
@@ -37,11 +38,19 @@ exibir_mensagem_3(nome="Ciclano")
 def calcular_total(numeros):
     return sum(numeros)
 
+lista = [1,2,3,4,5,6]
+
+for n in lista:
+    print(n)
+
 # Função que retorna o antecessor e o sucessor de um número
 def retorna_antecessor_e_sucessor(numero):
     antecessor = numero - 1
     sucessor = numero + 1
     return antecessor, sucessor
+
+
+antecessor, sucessor = retorna_antecessor_e_sucessor(10)
 
 # Chamadas das funções com retorno
 calcular_total([10, 20, 34])  # 64
@@ -57,18 +66,17 @@ def exibir_poema(data_extenso, *args, **kwargs):
 
 # Chamada da função com argumentos variáveis
 exibir_poema("Zen of Python", "Beautiful is better than ugly.",
-             autor="Tim Peters", ano=1999)
+             autor="Tim Peters", ano=1999, editora='Universitaria',
+             edicao = 'Primeira')
 
 # Função com argumentos posicionais apenas
-def criar_carro_po(modelo, ano, placa, /, marca, motor, combustivel):
+def criar_carro_po(modelo, ano, placa,/, marca, motor, combustivel):
     print(modelo, ano, placa, marca, motor, combustivel)
 
 # Chamadas da função com argumentos posicionais e de palavra-chave
-criar_carro_po("Palio", 1999, "ABC-1234", marca="Fiat",
-            motor="1.0", combustivel="Gasolina")  # válido
+criar_carro_po("Palio", 1999, "ABC-1234","Fiat","1.0","Gasolina")  # válido
 # A seguinte chamada é inválida devido ao uso incorreto de argumentos de palavra-chave
-criar_carro_po(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat",
-            motor="1.0", combustivel="Gasolina")  # inválido
+criar_carro_po(modelo="Palio", ano=1999, placa="ABC-1234")  # inválido
 
 # Função com argumentos de palavra-chave apenas
 def criar_carro_ko(*, modelo, ano, placa, marca, motor, combustivel):
@@ -93,7 +101,7 @@ criar_carro_complete(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat",
             motor="1.0", combustivel="Gasolina")  # inválido
 
 # Classe que representa uma calculadora simples
-class Calculadora:
+class CalculadoraSimples:
     def __init__(self):
         self.valor = 0
 
@@ -107,7 +115,7 @@ class Calculadora:
         return self.valor
 
 # Criar uma instância da classe Calculadora
-calculadora = Calculadora()
+calculadora = CalculadoraSimples()
 calculadora.somar(5)
 calculadora.subtrair(3)
 resultado = calculadora.obter_resultado()

@@ -99,7 +99,7 @@ housing["income_cat"].value_counts() / len(housing)
 
 #comparação
 
-8
+
 #remover a coluna de categoria income_cat
 
 for set_ in (strat_train_set, strat_test_set):
